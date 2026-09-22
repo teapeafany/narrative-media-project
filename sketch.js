@@ -984,8 +984,7 @@ function applyLoopDrift(script, loop) {
     }
 
     if (loop === 2) {
-        // their prompts start landing out of order, a line repeats back-to-back,
-        // and a whole beat drops out. i'm bracing for the ending before it comes.
+        // their prompts start landing out of order, a line repeats back-to-back
         const askA = byId(17);
         const askB = byId(18);
         collapseIncoming(askA, "Pretending what?"); // flatten before swapping the order
@@ -998,8 +997,7 @@ function applyLoopDrift(script, loop) {
     }
 
     if (loop >= 3) {
-        // collapse: LOVER is gone. just me asking "Where are you?" three times
-        // into nothing, and the confession i finally have to type with no cue.
+        // collapse: LOVER is gone. just me asking "Where are you?" three times into nothing, and the confession i finally have to type with no cue.
         return [
             { id: -2, speaker: "YOU", text: "Where are you?" },
             { id: -3, speaker: "YOU", text: "Where are you?" },
@@ -1011,8 +1009,7 @@ function applyLoopDrift(script, loop) {
     return drifted; // loop 0: as written.
 }
 
-// their reply reacts to what i just picked: dodging (easy) keeps them warm,
-// cracking (hard) rattles them. lines with no variant just use their default.
+// their reply reacts to what player just picked: dodging (easy) keeps them nice, (hard) rattles them. lines with no variant just use their default.
 function incomingText(entry) {
     let value = entry.text;
     if (lastChoice === "easy" && entry.easyText !== undefined) value = entry.easyText;
@@ -1032,9 +1029,6 @@ function playIncomingLine(entry) {
     phaseStartedAt = millis();
 }
 
-// even my plain lines don't send themselves — i have to type them out. no chips,
-// no timer, just me physically saying the words before they go. reuses the same
-// composer as the choices, flagged as a "line" so it skips the easy/hard chips.
 function playOutgoingLine() {
     pendingIncoming = null;
     selectedChoice = "line";
@@ -1092,8 +1086,7 @@ function resolveChoice(tone) {
     phase = "choiceTyping";
 }
 
-// whichever line i'm currently on the hook to type — a plain line, or the
-// easy/hard branch i picked (which itself depends on what i said last).
+// whichever line i'm currently on the hook to type
 function selectedChoiceText() {
     const entry = workingScript[currentIndex];
     if (selectedChoice === "line") return entry.text;
@@ -1101,7 +1094,6 @@ function selectedChoiceText() {
 }
 
 // the chip text for this beat. if i dodged last time, show the easy-path
-// follow-ups; if i cracked, show the ones that answer their rattled reply.
 function choiceChipText(tone) {
     const entry = workingScript[currentIndex];
     if (lastChoice === "easy") {
@@ -1129,7 +1121,7 @@ function matchesHardLine(input, target) {
 }
 
 // the exact next character the target wants, or null if i'm already done.
-// case-insensitive, but whitespace has to line up — no swallowing stray spaces.
+// case-insensitive, but whitespace has to line up
 function nextExpectedChar(typed, target) {
     if (typed.length >= target.length) return null;
     return target.charAt(typed.length);
