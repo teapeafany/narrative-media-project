@@ -2,6 +2,8 @@
 
 Interactive story in p5.js: a late-night iMessage thread. You have to type every reply yourself. The honest ones are timed. Fail the last line and the conversation loops, a little more broken each time, until you can finally say it.
 
+**Play it:** [teapeafany.github.io/narrative-media-project](https://teapeafany.github.io/narrative-media-project/)
+
 ## Run it
 
 Open `index.html` in a browser. If the photos don’t show, serve the folder:
