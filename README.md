@@ -6,24 +6,18 @@ Interactive story in p5.js: a late-night iMessage thread. You have to type every
 
 ## Run it
 
-Open `index.html` in a browser. If the photos don’t show, serve the folder:
-
-```bash
-python3 -m http.server 8000
-```
+Open `index.html` in a browser. 
 
 Then go to `http://127.0.0.1:8000`.
 
-The piece lives in `sketch.js`. Photos (and an unused track) sit in `assets/`.
-
 ## How it works
 
-**Opening (once).** Film still + subtitles, then a lock screen. Tap the “Where are you?” notification to open the chat. Loops skip this and drop straight back into the thread.
+**Opening (once).** still + subtitles, then a lock screen. Tap the “Where are you?” notification to open the chat. Loops skip this and drop straight back into the thread.
 
 **Typing.** Every YOU line has to be typed, character by character. Wrong keys don’t get absorbed — Backspace undoes. LOVER lines arrive on their own (typing dots, then the bubble).
 
 **Easy / hard.** At a choice you pick a chip, then type that line.
-- Easy is untimed — the dodge, the reflex.
+- Easy is untimed 
 - Hard is on a countdown. Run out of time and you bounce back to the chips.
 - Their next message (and sometimes the next chips) follow what you actually picked, so the easy path stays coherent.
 

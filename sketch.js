@@ -11,7 +11,7 @@
 // DIALOGUE SCRIPT
 const baseScript = [
     { id: 0,  speaker: "LOVER", text: "Where are you?" },
-    { id: 1,  speaker: "YOU",   text: "Where are you?" }, // i don't answer — i ask it right back
+    { id: 1,  speaker: "YOU",   text: "Where are you?" },
 
     { id: 2,  speaker: "LOVER", text: "Home soon. Long day." },
     { id: 3,  speaker: "YOU", choice: true,
@@ -197,6 +197,7 @@ function setup() {
 
 function draw() {
     const now = millis();
+    updateBgm();
     background("#ffffff");
     if (phase === "intro") {
         drawIntro();
@@ -886,13 +887,36 @@ function advanceIntro() {
 function beginLockscreen() {
     phase = "lockscreen";
     phaseStartedAt = millis();
+    startBgm();
 }
 
-// tapping the notification opens the thread for the very first time (loop 0).
 function startChat() {
+    startBgm();
     loopCount = 0;
     hardCount = 0;
     startLoop();
+}
+
+function startBgm() {
+    const el = document.getElementById("bgm");
+    if (!el) return;
+    el.loop = true;
+    if (el.volume === 1) el.volume = 0.2;
+    const play = el.play();
+    if (play && play.catch) play.catch(() => {});
+}
+
+function updateBgm() {
+    const el = document.getElementById("bgm");
+    if (!el) return;
+    let target = 0.2;
+    if (phase === "climax") target = 0.1;
+    if (phase === "end") {
+        const fade = constrain((millis() - phaseStartedAt) / 2800, 0, 1);
+        target = 0.2 * (1 - fade);
+        if (fade >= 1 && !el.paused) el.pause();
+    }
+    el.volume += (target - el.volume) * 0.08;
 }
 
 // (re)start the conversation for the current loopCount. no narration or

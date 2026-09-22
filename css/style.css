@@ -38,3 +38,7 @@ canvas {
     opacity: 0;
     pointer-events: none;
 }
+
+#bgm {
+    display: none;
+}
