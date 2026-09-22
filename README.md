@@ -24,8 +24,8 @@ Then go to `http://127.0.0.1:8000`.
 **Climax.** The last line is always *I don’t think we’re in love anymore*, typed in the same composer under a timer. It gets faster each loop, and a little slower the more hard lines you sent (`hardCount` never resets). A wrong key docks 0.3s. Timer hits 0 → silent restart, no fail screen.
 
 **Loops.** Each fail rebuilds the script:
-- Loop 1 — you stutter “Where are you?” at the top; hard lines get sharper. Easy replies still make sense.
-- Loop 2 — beats skip and repeat; their last prompts land out of order.
-- Loop 3+ — they’re gone. You type “Where are you?” three times into nothing, then the confession with no “Say it.” cue.
+- Loop 1: you stutter “Where are you?” at the top; hard lines get sharper. Easy replies still make sense.
+- Loop 2: beats skip and repeat; their last prompts land out of order.
+- Loop 3+: they’re gone. You type “Where are you?” three times into nothing, then the confession with no “Say it.” cue.
 
 **Ending.** Saying the line only *lands* on loop 3+. Before that, finishing it just loops. On success: fade to dark, one last extra unanswered “Where are you?”
